@@ -1,4 +1,4 @@
-module App.Components.Counter where
+module App.Components.ListVoices (jsListVoices) where
 
 import Prelude
 import Data.Interpolate (i)
@@ -10,13 +10,13 @@ import React.Basic.Hooks (Component, JSX, component, useState')
 import React.Basic.Hooks as Hooks
 
 type Props
-  = { label :: String }
+  = {}
 
-jsCounter :: Props -> JSX
-jsCounter = unsafePerformEffect mkCounter
+jsListVoices :: Props -> JSX
+jsListVoices = unsafePerformEffect mkListVoices
 
-mkCounter :: Component Props
-mkCounter =
+mkListVoices :: Component Props
+mkListVoices =
   component "Counter" \props -> Hooks.do
     count /\ setCount <- useState' 0
     pure do
@@ -24,6 +24,6 @@ mkCounter =
         [ p_ [ text $ i "You clicked " count " times" ]
         , button
             { onClick: handler_ $ setCount (count + 1)
-            , children: [ text props.label ]
+            , children: [ text "Click me" ]
             }
         ]
