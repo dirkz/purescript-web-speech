@@ -11,7 +11,7 @@ When creating a new Spago project, you can use
 to generate this file without the comments in this block.
 -}
 { name = "web-speech"
-, dependencies = [ "console", "effect", "prelude", "psci-support" ]
+, dependencies = [ "aff", "console", "effect", "prelude", "psci-support" ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
 }
