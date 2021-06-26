@@ -5,7 +5,7 @@ import Data.Either (Either(..))
 import Data.Tuple.Nested ((/\))
 import Effect.Aff (runAff_)
 import Effect.Unsafe (unsafePerformEffect)
-import React.Basic.DOM (div_, li, ul_)
+import React.Basic.DOM (div_, li, p, text, ul_)
 import React.Basic.Hooks (Component, JSX, component, useState', useEffectOnce)
 import React.Basic.Hooks as Hooks
 import Web.Speech.TTS as TTS
@@ -27,7 +27,9 @@ mkListVoices =
           TTS.getVoices
     pure do
       div_
-        [ ul_ (map listItem voices) ]
+        [ text "Voices"
+        , ul_ (map listItem voices)
+        ]
   where
   receivedVoices setter eitherVoices = case eitherVoices of
     Left _ -> setter [] -- TODO: Show the error
