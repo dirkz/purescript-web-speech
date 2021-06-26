@@ -2,7 +2,6 @@ module App.Components.ListVoices (jsListVoices) where
 
 import Prelude
 import Data.Either (Either(..))
-import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\))
 import Effect.Aff (runAff_)
 import Effect.Unsafe (unsafePerformEffect)
