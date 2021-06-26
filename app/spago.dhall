@@ -8,7 +8,6 @@ You can edit this file as you like.
   , "console"
   , "effect"
   , "either"
-  , "interpolate"
   , "prelude"
   , "psci-support"
   , "react-basic"
