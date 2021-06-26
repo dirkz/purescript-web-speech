@@ -8,7 +8,7 @@ import Effect.Aff.Compat (EffectFnAff, fromEffectFnAff)
 
 type Voice = {lang :: String, name :: String}
 
-foreign import _getVoices :: Unit -> EffectFnAff (Array Voice)
+foreign import _getVoices :: EffectFnAff (Array Voice)
 
-getVoices :: Unit -> Aff (Array Voice)
-getVoices = fromEffectFnAff <<< _getVoices
+getVoices :: Aff (Array Voice)
+getVoices = fromEffectFnAff _getVoices
