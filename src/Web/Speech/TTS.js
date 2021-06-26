@@ -26,11 +26,3 @@ exports._getVoices = function (onError, onSuccess) {
 
     innerGetVoices();
 }
-
-exports._voiceName = function (voice) {
-    return voice.name
-}
-
-exports._voiceLanguage = function (voice) {
-    return voice.lang
-}
