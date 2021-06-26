@@ -4,8 +4,10 @@ You can edit this file as you like.
 -}
 { name = "web-speech-test-app"
 , dependencies =
-  [ "console"
+  [ "aff"
+  , "console"
   , "effect"
+  , "either"
   , "interpolate"
   , "prelude"
   , "psci-support"
