@@ -8,10 +8,7 @@ exports._getVoices = function (onError, onSuccess) {
     let synth = window.speechSynthesis;
     if (speechSynthesis.onvoiceschanged !== undefined) {
         speechSynthesis.onvoiceschanged = innerGetVoices;
-        let voices = synth.getVoices();
-        if (voices.length > 0) {
-            onError(voices);
-        }
+        synth.getVoices(); // trigger a voice fetch
     } else {
         innerGetVoices();
     }
