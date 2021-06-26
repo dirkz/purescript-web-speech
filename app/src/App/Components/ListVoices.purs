@@ -28,8 +28,8 @@ mkListVoices =
       runAff do
         eitherVoices <- try TTS.getVoices
         case eitherVoices of
-          Left voices -> liftEffect $ setVoices voices -- TODO: Show the error
-          Right voices -> liftEffect $ setVoices voices
+          Left theVoices -> liftEffect $ setVoices theVoices -- TODO: Show the error
+          Right theVoices -> liftEffect $ setVoices theVoices
     pure do
       div_
         [ ul_ (map listItem voices) ]
