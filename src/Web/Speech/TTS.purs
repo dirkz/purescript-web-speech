@@ -3,7 +3,6 @@ module Web.Speech.TTS (getVoices) where
 
 import Prelude
 
-import Control.Monad.List.Trans (fromEffect)
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (EffectFnAff, fromEffectFnAff)
 
