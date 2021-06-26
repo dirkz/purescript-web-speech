@@ -18,7 +18,7 @@ jsListVoices = unsafePerformEffect mkListVoices
 
 mkListVoices :: Component Props
 mkListVoices =
-  component "Counter" \_ -> Hooks.do
+  component "ListVoices" \_ -> Hooks.do
     voices /\ setVoices <- useState' []
     useEffectOnce
       $ pure
