@@ -1,5 +1,5 @@
 -- |Wrapper around Web Speech Text-to-speech (TTS)
-module Web.Speech.TTS (Voice, getVoices, voiceName) where
+module Web.Speech.TTS (Voice, getVoices, voiceName, voiceLanguage) where
 
 import Data.Function.Uncurried (Fn1, runFn1)
 import Effect.Aff (Aff)
@@ -16,3 +16,8 @@ foreign import _voiceName :: Fn1 Voice String
 
 voiceName :: Voice -> String
 voiceName = runFn1 _voiceName
+
+foreign import _voiceLanguage :: Fn1 Voice String
+
+voiceLanguage :: Voice -> String
+voiceLanguage = runFn1 _voiceLanguage
