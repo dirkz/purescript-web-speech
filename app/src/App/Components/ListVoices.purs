@@ -83,3 +83,16 @@ elem ::
 elem name props children = name merged
   where
   merged = merge { children } props
+
+elemClass ::
+  forall a b c d e.
+  Nub
+    ( children :: b
+    , className :: a
+    | c
+    )
+    d =>
+  (Record d -> e) -> a -> Record c -> b -> e
+elemClass name className props children = name merged
+  where
+  merged = merge { className, children } props
