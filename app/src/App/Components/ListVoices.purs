@@ -34,9 +34,9 @@ mkListVoices =
         ]
   where
   receivedVoices setterError setterVoices eitherVoices = case eitherVoices of
-    Left _ -> do
+    Left err -> do
       setterVoices []
-      setterError $ Just "Error getting the voices"
+      setterError $ Just $ show err
     Right theVoices -> setterVoices theVoices
 
   listItem voice =
