@@ -1,1 +1,16 @@
+.container {
+    border-radius: 5px;
+    padding: 20px;
+}
 
+.col-1 {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+}
+
+.col-2 {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+}
