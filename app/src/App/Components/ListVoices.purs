@@ -9,7 +9,6 @@ import Effect.Unsafe (unsafePerformEffect)
 import React.Basic.DOM (div_, li, text, ul_)
 import React.Basic.Hooks (Component, JSX, component, useState', useEffectOnce)
 import React.Basic.Hooks as Hooks
-import Web.DOM.ParentNode (children)
 import Web.Speech.TTS as TTS
 
 type Props
@@ -42,11 +41,11 @@ mkListVoices =
 
   listItem voice =
     let
-      string = voice.name
+      string = voice.name <> " (" <> voice.lang <> ")"
     in
-      li { title: string, children: [ text voice.name ] }
+      li { title: string, children: [ text string ] }
 
   errorJsx :: forall a. Show a => Maybe a -> JSX
   errorJsx theMaybeError = case theMaybeError of
-    Nothing -> text "Found the following voices"
+    Nothing -> text "Found the following voices:"
     Just err -> text $ "Error: " <> show err
