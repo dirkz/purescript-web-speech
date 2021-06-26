@@ -9,6 +9,7 @@ import Effect.Unsafe (unsafePerformEffect)
 import React.Basic.DOM (div_, li, text, ul_)
 import React.Basic.Hooks (Component, JSX, component, useState', useEffectOnce)
 import React.Basic.Hooks as Hooks
+import Web.DOM.ParentNode (children)
 import Web.Speech.TTS as TTS
 
 type Props
@@ -43,7 +44,7 @@ mkListVoices =
     let
       string = voice.name
     in
-      li { title: string }
+      li { title: string, children: [ text voice.name ] }
 
   errorJsx :: forall a. Show a => Maybe a -> JSX
   errorJsx theMaybeError = case theMaybeError of
