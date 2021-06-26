@@ -38,23 +38,23 @@ mkListVoices =
     pure do
       div_
         [ h3_ [ text "Voices" ]
-        , content state
+        , content state currentInt
         ]
   where
   receivedVoices setState eitherVoices = case eitherVoices of
     Left err -> setState $ VoiceStateError $ show err
     Right theVoices -> setState $ VoiceStateVoices theVoices
 
-  listItem voice =
+  listItem int voice =
     let
       string = voice.name <> " (" <> voice.lang <> ")"
     in
       li { title: string, children: [ text string ] }
 
-  content state = case state of
+  content state int = case state of
     VoiceStateInitial -> text "Waiting for voices ..."
     VoiceStateError s -> text $ "Error: " <> s
-    VoiceStateVoices vs -> ul_ (map listItem vs)
+    VoiceStateVoices vs -> ul_ (map (listItem int) vs)
 
   nextRandomInt setter = do
     anInt <- randomInt 1 999
