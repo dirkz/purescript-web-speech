@@ -7,11 +7,13 @@ import Effect.Aff (runAff_)
 import Effect.Console (log)
 import Effect.Random (randomInt)
 import Effect.Unsafe (unsafePerformEffect)
+import Prim.Row (class Nub)
 import React.Basic.DOM (button, div_, h3_, li, text, ul_)
 import React.Basic.DOM as D
 import React.Basic.Events (handler_)
 import React.Basic.Hooks (Component, JSX, component, useEffectOnce, useState')
 import React.Basic.Hooks as Hooks
+import Record (merge)
 import Web.Speech.TTS (Voice, getVoices)
 
 type Props
@@ -57,9 +59,9 @@ mkListVoices =
 
       sayItText = "Say " <> show int
 
-      theButton = button { children: [ text sayItText ], onClick: handler_ speakIt }
+      theButton = elem button { onClick: handler_ speakIt } [ text sayItText ]
     in
-      li { title: string, children: [ D.div { children: [ text string, theButton ] } ] }
+      elem li { title: string } [ elem D.div {} [ text string, theButton ] ]
 
   content state int = case state of
     VoiceStateInitial -> text "Waiting for voices ..."
@@ -69,3 +71,15 @@ mkListVoices =
   nextRandomInt setter = do
     anInt <- randomInt 1 999
     setter anInt
+
+elem ::
+  forall a b c d.
+  Nub
+    ( children :: a
+    | b
+    )
+    c =>
+  (Record c -> d) -> Record b -> a -> d
+elem name props children = name merged
+  where
+  merged = merge { children } props
