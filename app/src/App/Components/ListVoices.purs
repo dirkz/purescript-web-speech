@@ -16,15 +16,15 @@ type Props
 jsListVoices :: Props -> JSX
 jsListVoices = unsafePerformEffect mkListVoices
 
-data State
-  = StateInitial
-  | StateVoices (Array Voice)
-  | StateError String
+data VoiceState
+  = VoiceStateInitial
+  | VoiceStateVoices (Array Voice)
+  | VoiceStateError String
 
 mkListVoices :: Component Props
 mkListVoices =
   component "ListVoices" \_ -> Hooks.do
-    state /\ setState <- useState' StateInitial
+    state /\ setState <- useState' VoiceStateInitial
     useEffectOnce do
       runAff_
         (receivedVoices setState)
@@ -37,8 +37,8 @@ mkListVoices =
         ]
   where
   receivedVoices setState eitherVoices = case eitherVoices of
-    Left err -> setState $ StateError $ show err
-    Right theVoices -> setState $ StateVoices theVoices
+    Left err -> setState $ VoiceStateError $ show err
+    Right theVoices -> setState $ VoiceStateVoices theVoices
 
   listItem voice =
     let
@@ -47,6 +47,6 @@ mkListVoices =
       li { title: string, children: [ text string ] }
 
   content state = case state of
-    StateInitial -> text "Waiting for voices ..."
-    StateError s -> text $ "Error: " <> s
-    StateVoices vs -> ul_ (map listItem vs)
+    VoiceStateInitial -> text "Waiting for voices ..."
+    VoiceStateError s -> text $ "Error: " <> s
+    VoiceStateVoices vs -> ul_ (map listItem vs)
