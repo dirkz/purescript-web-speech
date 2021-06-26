@@ -6,10 +6,10 @@ import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\))
 import Effect.Aff (runAff_)
 import Effect.Unsafe (unsafePerformEffect)
-import React.Basic.DOM (div_, li, text, ul_)
+import React.Basic.DOM (div_, h3_, li, text, ul_)
 import React.Basic.Hooks (Component, JSX, component, useState', useEffectOnce)
 import React.Basic.Hooks as Hooks
-import Web.Speech.TTS as TTS
+import Web.Speech.TTS (Voice, getVoices)
 
 type Props
   = {}
@@ -17,27 +17,29 @@ type Props
 jsListVoices :: Props -> JSX
 jsListVoices = unsafePerformEffect mkListVoices
 
+data State
+  = StateInitial
+  | StateVoices (Array Voice)
+  | StateError String
+
 mkListVoices :: Component Props
 mkListVoices =
   component "ListVoices" \_ -> Hooks.do
-    voices /\ setVoices <- useState' []
-    maybeError /\ setMaybeError <- useState' Nothing
+    state /\ setState <- useState' StateInitial
     useEffectOnce do
       runAff_
-        (receivedVoices setMaybeError setVoices)
-        TTS.getVoices
+        (receivedVoices setState)
+        getVoices
       pure mempty
     pure do
       div_
-        [ errorJsx maybeError
-        , ul_ (map listItem voices)
+        [ h3_ [ text "Voices" ]
+        , content state
         ]
   where
-  receivedVoices setterError setterVoices eitherVoices = case eitherVoices of
-    Left err -> do
-      setterVoices []
-      setterError $ Just $ show err
-    Right theVoices -> setterVoices theVoices
+  receivedVoices setState eitherVoices = case eitherVoices of
+    Left err -> setState $ StateError $ show err
+    Right theVoices -> setState $ StateVoices theVoices
 
   listItem voice =
     let
@@ -45,7 +47,7 @@ mkListVoices =
     in
       li { title: string, children: [ text string ] }
 
-  errorJsx :: forall a. Show a => Maybe a -> JSX
-  errorJsx theMaybeError = case theMaybeError of
-    Nothing -> text "Found the following voices:"
-    Just err -> text $ "Error: " <> show err
+  content state = case state of
+    StateInitial -> text "Waiting for voices ..."
+    StateError s -> text $ "Error: " <> s
+    StateVoices vs -> ul_ (map listItem vs)
