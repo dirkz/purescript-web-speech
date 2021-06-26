@@ -20,11 +20,11 @@ mkListVoices :: Component Props
 mkListVoices =
   component "ListVoices" \_ -> Hooks.do
     voices /\ setVoices <- useState' []
-    useEffectOnce
-      $ pure
-      $ runAff_
-          (receivedVoices setVoices)
-          TTS.getVoices
+    useEffectOnce do
+      runAff_
+        (receivedVoices setVoices)
+        TTS.getVoices
+      pure mempty
     pure do
       div_
         [ text "Voices"
