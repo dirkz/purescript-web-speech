@@ -22,14 +22,14 @@ jsListVoices = unsafePerformEffect mkListVoices
 
 mkListVoices :: Component Props
 mkListVoices =
-  component "Counter" \props -> Hooks.do
+  component "Counter" \_ -> Hooks.do
     voices /\ setVoices <- useState' []
     Hooks.useEffectOnce do
       runAff do
         eitherVoices <- try TTS.getVoices
         case eitherVoices of
-          Left voices -> setVoices voices -- TODO: Show the error
-          Right voices -> setVoices voices
+          Left voices -> liftEffect $ setVoices voices -- TODO: Show the error
+          Right voices -> liftEffect $ setVoices voices
     pure do
       div_
         [ ul_ (map listItem voices) ]
