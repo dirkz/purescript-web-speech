@@ -10,7 +10,7 @@ import Effect.Class (liftEffect)
 import Effect.Unsafe (unsafePerformEffect)
 import React.Basic.DOM (button, div_, li_, p_, text, ul_)
 import React.Basic.Events (handler_)
-import React.Basic.Hooks (Component, JSX, component, useState')
+import React.Basic.Hooks (Component, JSX, component, useState', useEffectOnce)
 import React.Basic.Hooks as Hooks
 import Web.Speech.TTS as TTS
 
@@ -24,7 +24,7 @@ mkListVoices :: Component Props
 mkListVoices =
   component "Counter" \_ -> Hooks.do
     voices /\ setVoices <- useState' []
-    Hooks.useEffectOnce do
+    useEffectOnce do
       runAff do
         eitherVoices <- try TTS.getVoices
         case eitherVoices of
