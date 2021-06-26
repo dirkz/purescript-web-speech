@@ -11,7 +11,7 @@ exports._getVoices = function() {
             speechSynthesis.onvoiceschanged = innerGetVoices;
             let voices = synth.getVoices();
             if voices.length > 0 {
-                onError(voices)
+                onError(voices);
             }
         } else {
             innerGetVoices();
