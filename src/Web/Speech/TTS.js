@@ -13,9 +13,7 @@ exports._getVoices = function (onError, onSuccess) {
             } else {
                 numberOfAttemptsWithZeroVoices++
             }
-        }
-
-        if (voices.length != 0) {
+        } else if (voices.length > 0) {
             onSuccess(voices);
         }
     }
