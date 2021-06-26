@@ -8,7 +8,7 @@ import Effect.Console (log)
 import Effect.Random (randomInt)
 import Effect.Unsafe (unsafePerformEffect)
 import Prim.Row (class Nub)
-import React.Basic.DOM (button, div_, h3_, li, text, ul_)
+import React.Basic.DOM (button, div_, h3_, text)
 import React.Basic.DOM as D
 import React.Basic.Events (handler_)
 import React.Basic.Hooks (Component, JSX, component, useEffectOnce, useState')
