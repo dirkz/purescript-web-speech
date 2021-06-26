@@ -11,6 +11,7 @@ You can edit this file as you like.
   , "maybe"
   , "prelude"
   , "psci-support"
+  , "random"
   , "react-basic"
   , "react-basic-dom"
   , "react-basic-hooks"
