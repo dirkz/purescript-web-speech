@@ -8,7 +8,7 @@ import Effect.Console (log)
 import Effect.Random (randomInt)
 import Effect.Unsafe (unsafePerformEffect)
 import Prim.Row (class Nub)
-import React.Basic.DOM (button, div_, h3_, text)
+import React.Basic.DOM (button, div_, h1_, text)
 import React.Basic.DOM as D
 import React.Basic.Events (handler_)
 import React.Basic.Hooks (Component, JSX, component, useEffectOnce, useState')
@@ -42,7 +42,7 @@ mkListVoices =
       pure mempty
     pure do
       div_
-        [ h3_ [ text "Voices" ]
+        [ h1_ [ text "Voices" ]
         , content state currentInt
         ]
   where
