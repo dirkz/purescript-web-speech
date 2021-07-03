@@ -74,12 +74,12 @@ mkListVoices =
         , elemClass D.div "voice-col-2" {} [ theButton ]
         ]
 
-  content state int randomIntSetter = case state of
+  content state int currentIntSetter = case state of
     VoiceStateInitial -> text "Waiting for voices ..."
     VoiceStateError s -> text $ "Error: " <> s
     VoiceStateVoices vs -> do
       elemClass D.div "component-list-voices" {}
-        [ elem button { onClick: handler_ (nextRandomInt randomIntSetter) } [ text "Other Number" ]
+        [ elem button { onClick: handler_ (nextRandomInt currentIntSetter) } [ text "Other Number" ]
         , elemClass D.div "voice-container" {} (map (listItem int) vs)
         ]
 
