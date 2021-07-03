@@ -1,6 +1,10 @@
+.app {
+    padding-left: 10px;
+}
+
 .voice-container {
     border-radius: 5px;
-    padding: 20px;
+    padding-top: 20px;
 }
 
 .voice-col-1 {
