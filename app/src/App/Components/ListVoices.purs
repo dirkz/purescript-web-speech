@@ -69,15 +69,15 @@ mkListVoices =
 
       theButton = elem button { onClick: handler_ speakIt } [ text sayItText ]
     in
-      elemClass D.div "row" { title: string }
-        [ elemClass D.div "col-1" {} [ text string ]
-        , elemClass D.div "col-2" {} [ theButton ]
+      elemClass D.div "voice-row" { title: string }
+        [ elemClass D.div "voice-col-1" {} [ text string ]
+        , elemClass D.div "voice-col-2" {} [ theButton ]
         ]
 
   content state int = case state of
     VoiceStateInitial -> text "Waiting for voices ..."
     VoiceStateError s -> text $ "Error: " <> s
-    VoiceStateVoices vs -> elemClass D.div "container" {} (map (listItem int) vs)
+    VoiceStateVoices vs -> elemClass D.div "voice-container" {} (map (listItem int) vs)
 
   nextRandomInt setter = do
     anInt <- randomInt 1 999
