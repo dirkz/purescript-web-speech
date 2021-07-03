@@ -51,7 +51,7 @@ mkListVoices =
     pure do
       div_
         [ h1_ [ text "Voices" ]
-        , content state currentInt
+        , content state currentInt setCurrentInt
         ]
   where
   receivedVoices setState eitherVoices = case eitherVoices of
@@ -74,12 +74,12 @@ mkListVoices =
         , elemClass D.div "voice-col-2" {} [ theButton ]
         ]
 
-  content state int = case state of
+  content state int randomIntSetter = case state of
     VoiceStateInitial -> text "Waiting for voices ..."
     VoiceStateError s -> text $ "Error: " <> s
     VoiceStateVoices vs -> do
       elemClass D.div "component-list-voices" {}
-        [ elem button {} [ text "Random Number" ]
+        [ elem button { onClick: handler_ (nextRandomInt randomIntSetter) } [ text "Other Number" ]
         , elemClass D.div "voice-container" {} (map (listItem int) vs)
         ]
 
