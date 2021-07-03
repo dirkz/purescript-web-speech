@@ -1,7 +1,7 @@
 "strict";
 
 exports._getVoices = function (onError, onSuccess) {
-    var numberOfAttemptsWithZeroVoices = 0
+    var numberOfAttemptsWithZeroVoices = 0;
     let synth = window.speechSynthesis;
 
     let innerGetVoices = function () {
@@ -9,14 +9,14 @@ exports._getVoices = function (onError, onSuccess) {
 
         if (voices.length == 0) {
             if (numberOfAttemptsWithZeroVoices > 0) {
-                onError("No voices found")
+                onError("No voices found");
             } else {
-                numberOfAttemptsWithZeroVoices++
+                numberOfAttemptsWithZeroVoices++;
             }
         } else if (voices.length > 0) {
             onSuccess(voices);
         }
-    }
+    };
 
     if (speechSynthesis.onvoiceschanged !== undefined) {
         speechSynthesis.onvoiceschanged = innerGetVoices;
