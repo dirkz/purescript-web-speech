@@ -77,7 +77,11 @@ mkListVoices =
   content state int = case state of
     VoiceStateInitial -> text "Waiting for voices ..."
     VoiceStateError s -> text $ "Error: " <> s
-    VoiceStateVoices vs -> elemClass D.div "voice-container" {} (map (listItem int) vs)
+    VoiceStateVoices vs -> do
+      elemClass D.div "component-list-voices" {}
+        [ elem button {} [ text "Random Number" ]
+        , elemClass D.div "voice-container" {} (map (listItem int) vs)
+        ]
 
   nextRandomInt setter = do
     anInt <- randomInt 1 999
