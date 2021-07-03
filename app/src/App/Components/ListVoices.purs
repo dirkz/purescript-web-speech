@@ -14,6 +14,9 @@ import React.Basic.Events (handler_)
 import React.Basic.Hooks (Component, JSX, component, useEffectOnce, useState')
 import React.Basic.Hooks as Hooks
 import Record (merge)
+import Web.HTML (window)
+import Web.HTML.HTMLDocument (setTitle)
+import Web.HTML.Window (document)
 import Web.Speech.TTS (Voice, getVoices)
 
 type Props
@@ -39,6 +42,11 @@ mkListVoices =
       pure mempty
     useEffectOnce do
       nextRandomInt setCurrentInt
+      pure mempty
+    useEffectOnce do
+      w <- window
+      doc <- document w
+      setTitle "Voices" doc
       pure mempty
     pure do
       div_
