@@ -8,23 +8,21 @@ module Web.Speech.Synthesis
 
 import Prelude
 
-import Data.Argonaut (Json, JsonDecodeError, decodeJson)
 import Effect (Effect)
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (EffectFn1, EffectFnAff, fromEffectFnAff, runEffectFn1)
 import Web.HTML.Window (Window)
 import Web.Speech.Synthesis.Voice (Voice)
-import Data.Either (Either)
 
 --|Represents a [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 foreign import data Synthesis :: Type
 
-foreign import _synthesis :: EffectFn1 Window Json
+foreign import _synthesis :: EffectFn1 Window Synthesis
 
 --|The global `speechSynthesis` object from the given `Window`.
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
-synthesis :: Window -> Effect (Either JsonDecodeError Synthesis)
-synthesis = (map decodeJson) <<< runEffectFn1 _synthesis
+synthesis :: Window -> Effect Synthesis
+synthesis = runEffectFn1 _synthesis
 
 foreign import _voices :: Synthesis -> EffectFnAff (Array Voice)
 

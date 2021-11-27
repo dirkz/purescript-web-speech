@@ -12,15 +12,7 @@ to generate this file without the comments in this block.
 -}
 { name = "web-speech"
 , dependencies =
-  [ "aff"
-  , "argonaut"
-  , "effect"
-  , "either"
-  , "functions"
-  , "prelude"
-  , "psci-support"
-  , "web-html"
-  ]
+  [ "aff", "effect", "functions", "prelude", "psci-support", "web-html" ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs" ]
 }
