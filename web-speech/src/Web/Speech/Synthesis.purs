@@ -2,7 +2,6 @@
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 module Web.Speech.Synthesis
   ( Synthesis
-  , windowInstance
   , synthesis
   , voices
   ) where
@@ -17,13 +16,6 @@ import Web.Speech.Synthesis.Voice (Voice)
 
 --|Represents a [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 foreign import data Synthesis :: Type
-
-foreign import _windowInstance :: Effect Synthesis
-
---|The global `window.speechSynthesis` object.
---|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
-windowInstance :: Effect Synthesis
-windowInstance = _windowInstance
 
 foreign import _synthesis :: EffectFn1 Window Synthesis
 
