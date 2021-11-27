@@ -11,3 +11,7 @@ exports._lang = function (voice) {
 exports._localService = function (voice) {
     return voice.localService;
 };
+
+exports._name = function (voice) {
+    return voice.name;
+};

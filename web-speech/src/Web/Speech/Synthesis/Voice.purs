@@ -1,6 +1,12 @@
 --|The SpeechSynthesisVoice interface of the Web Speech API represents a voice that the system supports. Every SpeechSynthesisVoice has its own relative speech service including information about language, name and URI.
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
-module Web.Speech.Synthesis.Voice (Voice, default, lang, localService) where
+module Web.Speech.Synthesis.Voice
+  ( Voice
+  , default
+  , lang
+  , localService
+  , name
+  ) where
 
 import Data.Function.Uncurried (Fn1, runFn1)
 
@@ -27,3 +33,10 @@ foreign import _localService :: Fn1 Voice Boolean
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService)
 localService :: Voice -> Boolean
 localService = runFn1 _localService
+
+foreign import _name :: Fn1 Voice String
+
+--|Returns a human-readable name that represents the voice.
+--|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/name)
+name :: Voice -> String
+name = runFn1 _name
