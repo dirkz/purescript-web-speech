@@ -7,3 +7,7 @@ exports._default = function (voice) {
 exports._lang = function (voice) {
     return voice.lang;
 };
+
+exports._localService = function (voice) {
+    return voice.localService;
+};
