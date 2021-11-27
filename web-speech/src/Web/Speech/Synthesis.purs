@@ -4,10 +4,14 @@ module Web.Speech.Synthesis
   ( Synthesis
   , windowInstance
   , voices
+  , getVoices
   ) where
 
+import Prelude
+
 import Effect (Effect)
-import Effect.Aff.Compat (EffectFn1, runEffectFn1)
+import Effect.Aff (Aff)
+import Effect.Aff.Compat (EffectFn1, EffectFnAff, fromEffectFnAff, runEffectFn1)
 import Web.Speech.Synthesis.Voice (Voice)
 
 --|Represents a [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
@@ -26,3 +30,10 @@ foreign import _voices :: EffectFn1 Synthesis (Array Voice)
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices)
 voices :: Synthesis -> Effect (Array Voice)
 voices = runEffectFn1 _voices
+
+foreign import _getVoices :: Synthesis -> EffectFnAff (Array Voice)
+
+--|Returns a list of SpeechSynthesisVoice objects representing all the available voices on the current device.
+--|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices)
+getVoices :: Synthesis -> Aff (Array Voice)
+getVoices synth = fromEffectFnAff $ _getVoices synth
