@@ -4,6 +4,12 @@ exports._windowInstance = function () {
     return window.speechSynthesis;
 };
 
+exports._synthesis = function () {
+    return function (window) {
+        return window.speechSynthesis;
+    };
+};
+
 exports._voices = function (synth) {
     function (onError, onSuccess) {
         var numberOfAttemptsWithZeroVoices = 0;
