@@ -5,7 +5,7 @@ module Web.Speech.Synthesis.Voice (Voice, default, lang) where
 
 import Data.Function.Uncurried (Fn1, runFn1)
 
---|Represents [SpeechSynthesisVoice](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
+--|Represents a [SpeechSynthesisVoice](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
 foreign import data Voice :: Type
 
 foreign import _default :: Fn1 Voice Boolean
