@@ -1,7 +1,7 @@
 "strict";
 
 exports._synthesis = function () {
-    return function (window) {
+    function (window) {
         return window.speechSynthesis;
     };
 };
