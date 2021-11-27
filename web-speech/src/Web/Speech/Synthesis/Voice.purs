@@ -6,6 +6,7 @@ module Web.Speech.Synthesis.Voice
   , lang
   , localService
   , name
+  , voiceURI
   ) where
 
 import Data.Function.Uncurried (Fn1, runFn1)
@@ -40,3 +41,10 @@ foreign import _name :: Fn1 Voice String
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/name)
 name :: Voice -> String
 name = runFn1 _name
+
+foreign import _voiceURI :: Fn1 Voice String
+
+--|Returns the type of URI and location of the speech synthesis service for this voice.
+--|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/voiceURI)
+voiceURI :: Voice -> String
+voiceURI = runFn1 _voiceURI

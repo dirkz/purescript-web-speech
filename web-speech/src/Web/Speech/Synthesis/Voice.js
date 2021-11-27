@@ -15,3 +15,7 @@ exports._localService = function (voice) {
 exports._name = function (voice) {
     return voice.name;
 };
+
+exports._voiceURI = function (voice) {
+    return voice.voiceURI;
+};
