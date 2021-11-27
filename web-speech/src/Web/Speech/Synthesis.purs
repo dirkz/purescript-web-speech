@@ -7,7 +7,6 @@ module Web.Speech.Synthesis
   ) where
 
 import Prelude
-
 import Effect (Effect)
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (EffectFnAff, fromEffectFnAff)
