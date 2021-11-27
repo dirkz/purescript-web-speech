@@ -4,7 +4,7 @@ exports._windowInstance = function () {
     return window.speechSynthesis;
 };
 
-exports._getVoices = function (synth) {
+exports._voices = function (synth) {
     function (onError, onSuccess) {
         var numberOfAttemptsWithZeroVoices = 0;
 
