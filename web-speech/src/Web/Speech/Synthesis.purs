@@ -21,7 +21,7 @@ foreign import data Synthesis :: Type
 
 foreign import _synthesis :: EffectFn1 Window (Nullable Synthesis)
 
---|The global `speechSynthesis` object from the given `Window`.
+--|The `speechSynthesis` object from the given `Window`.
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 synthesis :: Window -> Effect (Maybe Synthesis)
 synthesis = map toMaybe <<< runEffectFn1 _synthesis
