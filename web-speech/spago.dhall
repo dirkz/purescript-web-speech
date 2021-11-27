@@ -15,6 +15,7 @@ to generate this file without the comments in this block.
   [ "aff"
   , "effect"
   , "functions"
+  , "maybe"
   , "nullable"
   , "prelude"
   , "psci-support"
