@@ -1,13 +1,13 @@
 "strict";
 
 exports._synthesis = function () {
-    function (window) {
+    return function (window) {
         return window.speechSynthesis;
     };
 };
 
 exports._voices = function (synth) {
-    function (onError, onSuccess) {
+    return function (onError, onSuccess) {
         var numberOfAttemptsWithZeroVoices = 0;
 
         let innerGetVoices = function () {
