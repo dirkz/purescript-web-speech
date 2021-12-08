@@ -1,17 +1,19 @@
 module Web.Speech.TTS.Utterance
-  ( defaultSpec
+  ( Utterance
+  , create
   )
   where
+
+import Effect (Effect)
+import Effect.Aff.Compat (runEffectFn1)
+import Effect.Uncurried (EffectFn1)
 
 --|Represents a [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 foreign import data Utterance :: Type
 
---|Variable parameters for an utterance.
-type UtteranceSpec
-  = { pitch :: Number
-    , rate :: Number
-    , volume :: Number
-    }
+foreign import _create :: EffectFn1 String Utterance
 
-defaultSpec :: UtteranceSpec
-defaultSpec = { pitch: 1.0, rate: 1.0, volume: 1.0 }
+--|The SpeechSynthesisUtterance() constructor of the SpeechSynthesisUtterance interface returns a new SpeechSynthesisUtterance object instance.
+--|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/SpeechSynthesisUtterance)
+create :: String -> Effect Utterance
+create = runEffectFn1 _create
