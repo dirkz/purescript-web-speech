@@ -2,19 +2,21 @@
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 module Web.Speech.TTS
   ( TTS
+  , speak
   , tts
   , voices
   ) where
 
 import Prelude
-
+import Data.Maybe (Maybe)
 import Data.Nullable (Nullable, toMaybe)
 import Effect (Effect)
 import Effect.Aff (Aff)
-import Effect.Aff.Compat (EffectFn1, EffectFnAff, fromEffectFnAff, runEffectFn1)
+import Effect.Aff.Compat (EffectFnAff, fromEffectFnAff)
+import Effect.Uncurried (EffectFn1, EffectFn2, runEffectFn1, runEffectFn2)
 import Web.HTML.Window (Window)
+import Web.Speech.TTS.Utterance (Utterance)
 import Web.Speech.TTS.Voice (Voice)
-import Data.Maybe (Maybe)
 
 --|Represents a [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 foreign import data TTS :: Type
@@ -32,3 +34,8 @@ foreign import _voices :: TTS -> EffectFnAff (Array Voice)
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices)
 voices :: TTS -> Aff (Array Voice)
 voices synth = fromEffectFnAff $ _voices synth
+
+foreign import _speak :: EffectFn2 TTS Utterance Unit
+
+speak :: TTS -> Utterance -> Effect Unit
+speak = runEffectFn2 _speak

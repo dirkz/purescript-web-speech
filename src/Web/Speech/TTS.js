@@ -37,3 +37,7 @@ exports._voices = function (synth) {
         innerGetVoices();
     };
 };
+
+exports._speak = function (tts, utterance) {
+    tts.speak(utterance);
+};
