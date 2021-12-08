@@ -1,6 +1,6 @@
 --|The SpeechSynthesis interface of the Web Speech API is the controller interface for the speech service; this can be used to retrieve information about the synthesis voices available on the device, start and pause speech, and other commands besides.
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
-module Web.Speech.Synthesis
+module Web.Speech.TTS
   ( TTS
   , tts
   , voices
@@ -13,7 +13,7 @@ import Effect (Effect)
 import Effect.Aff (Aff)
 import Effect.Aff.Compat (EffectFn1, EffectFnAff, fromEffectFnAff, runEffectFn1)
 import Web.HTML.Window (Window)
-import Web.Speech.Synthesis.Voice (Voice)
+import Web.Speech.TTS.Voice (Voice)
 import Data.Maybe (Maybe)
 
 --|Represents a [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
