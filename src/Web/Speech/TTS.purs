@@ -33,7 +33,7 @@ foreign import _voices :: TTS -> EffectFnAff (Array Voice)
 --|Returns a list of SpeechSynthesisVoice objects representing all the available voices on the current device.
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices)
 voices :: TTS -> Aff (Array Voice)
-voices synth = fromEffectFnAff $ _voices synth
+voices speech = fromEffectFnAff $ _voices speech
 
 foreign import _speak :: EffectFn2 TTS Utterance Unit
 
