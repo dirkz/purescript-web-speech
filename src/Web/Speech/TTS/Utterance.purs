@@ -20,9 +20,9 @@ foreign import _create :: EffectFn1 String Utterance
 create :: String -> Effect Utterance
 create = runEffectFn1 _create
 
-foreign import _setVoice :: EffectFn2 Voice Utterance Unit
+foreign import _setVoice :: EffectFn2 Utterance Voice Unit
 
 --|Sets the voice for this utterance.
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/voice)
-setVoice :: Voice -> Utterance -> Effect Unit
+setVoice :: Utterance -> Voice -> Effect Unit
 setVoice = runEffectFn2 _setVoice
