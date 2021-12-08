@@ -1,6 +1,6 @@
 "strict";
 
-exports._synthesis = function (window) {
+exports._tts = function (window) {
     return window.speechSynthesis;
 };
 
