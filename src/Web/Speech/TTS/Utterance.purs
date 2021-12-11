@@ -1,15 +1,18 @@
 module Web.Speech.TTS.Utterance
-  ( Utterance
+  ( PitchRateVolume
+  , Utterance
   , create
-  , setVoice
-  , PitchRateVolume
+  , createWithVoiceAndPitch
   , defaultPitchRateVolume
-  ) where
+  , setVoice
+  )
+  where
 
 import Prelude
+
 import Effect (Effect)
 import Effect.Aff.Compat (runEffectFn1, runEffectFn2)
-import Effect.Uncurried (EffectFn1, EffectFn2)
+import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, runEffectFn3)
 import Web.Speech.TTS.Voice (Voice)
 
 --|Represents a [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
@@ -28,6 +31,12 @@ foreign import _setVoice :: EffectFn2 Utterance Voice Unit
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/voice)
 setVoice :: Utterance -> Voice -> Effect Unit
 setVoice = runEffectFn2 _setVoice
+
+foreign import _createWithVoiceAndPitch :: EffectFn3 Voice PitchRateVolume String Utterance
+
+--|Creates an utterance with voice, pitch, rate and volume, and text.
+createWithVoiceAndPitch :: Voice -> PitchRateVolume -> String -> Effect Utterance
+createWithVoiceAndPitch = runEffectFn3 _createWithVoiceAndPitch
 
 --|Pitch, rate and volume for an utterance.
 --|
