@@ -2,6 +2,8 @@ module Web.Speech.TTS.Utterance
   ( Utterance
   , create
   , setVoice
+  , PitchRateVolume
+  , defaultPitchRateVolume
   ) where
 
 import Prelude
@@ -26,3 +28,24 @@ foreign import _setVoice :: EffectFn2 Utterance Voice Unit
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/voice)
 setVoice :: Utterance -> Voice -> Effect Unit
 setVoice = runEffectFn2 _setVoice
+
+--|Pitch, rate and volume for an utterance.
+--|
+--|* [Pitch](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/pitch):
+--|  Between 0.1 (lowest) and 10 (highest), with 1 being the default pitch for the current platform or voice.
+--|* [Rate](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/rate):
+--|  Between 0.1 (lowest) and 10 (highest), with 1 being the default pitch for the current platform or voice.
+--|* [Volume](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/volume):
+--|  Between 0 (lowest) and 1 (highest), with 1 being the default.
+type PitchRateVolume
+  = { pitch :: Number
+    , rate :: Number
+    , volume :: Number
+    }
+
+defaultPitchRateVolume :: PitchRateVolume
+defaultPitchRateVolume =
+  { pitch: 1.0
+  , rate: 1.0
+  , volume: 1.0
+  }
