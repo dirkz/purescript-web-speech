@@ -2,7 +2,7 @@
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
 module Web.Speech.TTS.Voice
   ( Voice
-  , default
+  , isDefault
   , lang
   , localService
   , name
@@ -14,12 +14,12 @@ import Data.Function.Uncurried (Fn1, runFn1)
 --|Represents a [SpeechSynthesisVoice](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
 foreign import data Voice :: Type
 
-foreign import _default :: Fn1 Voice Boolean
+foreign import _isDefault :: Fn1 Voice Boolean
 
 --|A boolean value indicating whether the voice is the default voice for the current app language (true), or not (false.)
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/default)
-default :: Voice -> Boolean
-default = runFn1 _default
+isDefault :: Voice -> Boolean
+isDefault = runFn1 _isDefault
 
 foreign import _lang :: Fn1 Voice String
 

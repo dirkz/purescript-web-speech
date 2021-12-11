@@ -1,6 +1,6 @@
 "strict";
 
-exports._default = function (voice) {
+exports._isDefault = function (voice) {
     return voice.default;
 };
 
