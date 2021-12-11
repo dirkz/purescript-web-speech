@@ -9,6 +9,8 @@ module Web.Speech.TTS.Utterance
   , rateMax
   , rateMin
   , setVoice
+  , volumeMax
+  , volumeMin
   )
   where
 
@@ -74,3 +76,9 @@ rateMin = 0.1
 
 rateMax :: Number
 rateMax = 10.0
+
+volumeMin :: Number
+volumeMin = 0.0
+
+volumeMax :: Number
+volumeMax = 1.0
