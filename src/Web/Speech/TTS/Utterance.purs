@@ -4,8 +4,10 @@ module Web.Speech.TTS.Utterance
   , create
   , createWithVoiceAndPitch
   , defaultPitchRateVolume
-  , pitchMin
   , pitchMax
+  , pitchMin
+  , rateMax
+  , rateMin
   , setVoice
   )
   where
@@ -66,3 +68,9 @@ pitchMin = 0.0
 
 pitchMax :: Number
 pitchMax = 2.0
+
+rateMin :: Number
+rateMin = 0.1
+
+rateMax :: Number
+rateMax = 10.0
