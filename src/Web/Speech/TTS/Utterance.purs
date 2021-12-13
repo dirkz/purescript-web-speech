@@ -48,6 +48,7 @@ createWithVoiceAndPitch = runEffectFn3 _createWithVoiceAndPitch
 --|  Between 0 (lowest) and 2 (highest), with 1 being the default pitch for the current platform or voice.
 --|* [Rate](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/rate):
 --|  Between 0.1 (lowest) and 10 (highest), with 1 being the default pitch for the current platform or voice.
+--|  Note that the documentation looks wrong, and `rateMax` has been set to 2.0.
 --|* [Volume](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/volume):
 --|  Between 0 (lowest) and 1 (highest), with 1 being the default.
 type PitchRateVolume
@@ -72,8 +73,10 @@ pitchMax = 2.0
 rateMin :: Number
 rateMin = 0.1
 
+--|Note that this is capped to 2.0. Even though the documentation says 10.0 is possible,
+--|I don't think this makes any sense.
 rateMax :: Number
-rateMax = 10.0
+rateMax = 2.0
 
 volumeMin :: Number
 volumeMin = 0.0
