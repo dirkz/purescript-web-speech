@@ -11,11 +11,9 @@ module Web.Speech.TTS.Utterance
   , setVoice
   , volumeMax
   , volumeMin
-  )
-  where
+  ) where
 
 import Prelude
-
 import Effect (Effect)
 import Effect.Aff.Compat (runEffectFn1, runEffectFn2)
 import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, runEffectFn3)
