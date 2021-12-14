@@ -20,5 +20,5 @@ Pull requests are welcome. Please be aware of the LICENSE and format your code w
 
 * See the [spago docs](https://github.com/purescript/spago#publish-my-library).
 * Also, see the [package set](https://github.com/purescript/package-sets/blob/master/CONTRIBUTING.md).
-** Add/edit your [group file](https://github.com/purescript/package-sets/tree/master/src/groups).
+ ** Add/edit your [group file](https://github.com/purescript/package-sets/tree/master/src/groups).
 * Add your project to [the new packages set](https://github.com/purescript/registry/blob/master/new-packages.json).
