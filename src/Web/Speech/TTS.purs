@@ -39,6 +39,8 @@ voices speech = fromEffectFnAff $ _voices speech
 
 foreign import _speak :: EffectFn2 TTS Utterance Unit
 
+--|The speak() method of the SpeechSynthesis interface adds an utterance to the utterance queue; it will be spoken when any other utterances queued before it have been spoken.
+--|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/speak)
 speak :: TTS -> Utterance -> Effect Unit
 speak = runEffectFn2 _speak
 
