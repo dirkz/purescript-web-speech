@@ -16,6 +16,8 @@ Pull requests are welcome. Please be aware of the LICENSE and format your code w
 
 ### Creating/updating the package on pursuit
 
+See the [spago docs](https://github.com/purescript/spago#publish-my-library).
+
 The process looks like this:
 
 ```
