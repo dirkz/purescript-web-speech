@@ -69,12 +69,15 @@ defaultPitchRateVolume =
   , volume: defaultVolume
   }
 
+--|The minimum pitch.
 pitchMin :: Number
 pitchMin = 0.0
 
+--|The maximum pitch.
 pitchMax :: Number
 pitchMax = 2.0
 
+--|The minimum rate.
 rateMin :: Number
 rateMin = 0.1
 
@@ -85,8 +88,10 @@ rateMin = 0.1
 rateMax :: Number
 rateMax = 2.0
 
+--|The minimum volume.
 volumeMin :: Number
 volumeMin = 0.0
 
+--|The maximum volume.
 volumeMax :: Number
 volumeMax = 1.0
