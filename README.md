@@ -1,6 +1,6 @@
 # purescript-web-speech
 
-Web speech, TTS (text to speech) for purescript.
+Tags: web speech, TTS (text to speech), purescript
 
 A purescript wrapper around the most basic functionality of [speech synthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/speak).
 
