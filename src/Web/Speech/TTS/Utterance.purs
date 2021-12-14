@@ -3,7 +3,10 @@ module Web.Speech.TTS.Utterance
   , Utterance
   , createWithVoiceAndPitch
   , createWithVoiceAndRate
+  , defaultPitch
   , defaultPitchRateVolume
+  , defaultRate
+  , defaultVolume
   , pitchMax
   , pitchMin
   , rateMax
@@ -46,11 +49,24 @@ foreign import _createWithVoiceAndPitch :: EffectFn3 Voice PitchRateVolume Strin
 createWithVoiceAndPitch :: Voice -> PitchRateVolume -> String -> Effect Utterance
 createWithVoiceAndPitch = runEffectFn3 _createWithVoiceAndPitch
 
+--|The default rate.
+defaultRate :: Number
+defaultRate = 1.0
+
+--|The default volume.
+defaultVolume :: Number
+defaultVolume = 1.0
+
+--|The default pitch.
+defaultPitch :: Number
+defaultPitch = 1.0
+
+--|The default pitch, rate and volume.
 defaultPitchRateVolume :: PitchRateVolume
 defaultPitchRateVolume =
-  { pitch: 1.0
-  , rate: 1.0
-  , volume: 1.0
+  { pitch: defaultPitch
+  , rate: defaultRate
+  , volume: defaultVolume
   }
 
 pitchMin :: Number
