@@ -18,7 +18,7 @@ Pull requests are welcome. Please be aware of the LICENSE and format your code w
 
 ### Creating/updating the package on pursuit
 
-* See the [spago docs](https://github.com/purescript/spago#publish-my-library).
+* Follow the [spago docs](https://github.com/purescript/spago#publish-my-library).
 * Add your project to [the registry](https://github.com/purescript/registry/blob/master/new-packages.json).
 * Update the [package set](https://github.com/purescript/package-sets/blob/master/CONTRIBUTING.md).
   * Add/edit your [group file](https://github.com/purescript/package-sets/tree/master/src/groups).
