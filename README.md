@@ -14,7 +14,7 @@ Pull requests are welcome. Please be aware of the LICENSE and format your code w
 
 ## Author's Notes
 
-### Creating/Updating the package on pursuit
+### Creating/updating the package on pursuit
 
 The process looks like this:
 
