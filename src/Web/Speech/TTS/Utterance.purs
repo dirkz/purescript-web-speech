@@ -20,12 +20,6 @@ import Web.Speech.TTS.Voice (Voice)
 --|Represents a [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 foreign import data Utterance :: Type
 
-foreign import _createWithVoiceAndPitch :: EffectFn3 Voice PitchRateVolume String Utterance
-
---|Creates an utterance with voice, pitch, rate and volume, and text.
-createWithVoiceAndPitch :: Voice -> PitchRateVolume -> String -> Effect Utterance
-createWithVoiceAndPitch = runEffectFn3 _createWithVoiceAndPitch
-
 foreign import _createWithVoiceAndRate :: EffectFn3 Voice Number String Utterance
 
 --|Creates an utterance with voice, pitch, rate and volume, and text.
@@ -45,6 +39,12 @@ type PitchRateVolume
     , rate :: Number
     , volume :: Number
     }
+
+foreign import _createWithVoiceAndPitch :: EffectFn3 Voice PitchRateVolume String Utterance
+
+--|Creates an utterance with voice, pitch, rate and volume, and text.
+createWithVoiceAndPitch :: Voice -> PitchRateVolume -> String -> Effect Utterance
+createWithVoiceAndPitch = runEffectFn3 _createWithVoiceAndPitch
 
 defaultPitchRateVolume :: PitchRateVolume
 defaultPitchRateVolume =
