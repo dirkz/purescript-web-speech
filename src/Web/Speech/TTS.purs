@@ -2,10 +2,12 @@
 --|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 module Web.Speech.TTS
   ( TTS
+  , cancel
   , speak
   , tts
   , voices
-  ) where
+  )
+  where
 
 import Prelude
 import Data.Maybe (Maybe)
@@ -39,3 +41,11 @@ foreign import _speak :: EffectFn2 TTS Utterance Unit
 
 speak :: TTS -> Utterance -> Effect Unit
 speak = runEffectFn2 _speak
+
+foreign import _cancel :: EffectFn1 TTS Unit
+
+--|The cancel() method of the SpeechSynthesis interface removes all utterances from the utterance queue.
+--|If an utterance is currently being spoken, speaking will stop immediately.
+--|[MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/cancel)
+cancel :: TTS -> Effect Unit
+cancel = runEffectFn1 _cancel

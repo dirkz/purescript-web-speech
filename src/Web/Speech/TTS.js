@@ -41,3 +41,7 @@ exports._voices = function (synth) {
 exports._speak = function (tts, utterance) {
     tts.speak(utterance);
 };
+
+exports._cancel = function (tts) {
+    tts.cancel();
+};
