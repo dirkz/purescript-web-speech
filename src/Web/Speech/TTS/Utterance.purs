@@ -2,6 +2,7 @@ module Web.Speech.TTS.Utterance
   ( PitchRateVolume
   , Utterance
   , createWithVoiceAndPitch
+  , createWithVoiceAndRate
   , defaultPitchRateVolume
   , pitchMax
   , pitchMin
@@ -24,6 +25,12 @@ foreign import _createWithVoiceAndPitch :: EffectFn3 Voice PitchRateVolume Strin
 --|Creates an utterance with voice, pitch, rate and volume, and text.
 createWithVoiceAndPitch :: Voice -> PitchRateVolume -> String -> Effect Utterance
 createWithVoiceAndPitch = runEffectFn3 _createWithVoiceAndPitch
+
+foreign import _createWithVoiceAndRate :: EffectFn3 Voice Number String Utterance
+
+--|Creates an utterance with voice, pitch, rate and volume, and text.
+createWithVoiceAndRate :: Voice -> Number -> String -> Effect Utterance
+createWithVoiceAndRate = runEffectFn3 _createWithVoiceAndRate
 
 --|Pitch, rate and volume for an utterance.
 --|

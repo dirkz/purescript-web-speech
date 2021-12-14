@@ -8,3 +8,10 @@ exports._createWithVoiceAndPitch = function (voice, pitch, text) {
     utt.volume = pitch.volume;
     return utt;
 };
+
+exports._createWithVoiceAndRate = function (voice, rate, text) {
+    let utt = new SpeechSynthesisUtterance(text);
+    utt.voice = voice;
+    utt.rate = rate;
+    return utt;
+};
