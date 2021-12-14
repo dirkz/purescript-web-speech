@@ -14,17 +14,17 @@ Pull requests are welcome. Please be aware of the LICENSE and format your code w
 
 ## Author's Notes
 
-### Updating the package on pursuit
+### Creating/Updating the package on pursuit
 
 The process looks like this:
 
 ```
-# Check the created documentation, improve it if needed.
-# Note: You need bower.json to do that, in case you deleted that (see the next step).
-pulp docs -- --format html
-
 # Create (update) a bower.json, create the next version tag.
 spago bump-version minor --no-dry-run
+
+# Check the created documentation, improve it if needed.
+# Note: You need bower.json to do that, in case you deleted that (see the first step).
+pulp docs -- --format html
 
 # Log into github
 pulp login
