@@ -14,6 +14,7 @@ module Web.Speech.TTS.Utterance
   , rate
   , rateMax
   , rateMin
+  , text
   , volume
   , volumeMax
   , volumeMin
@@ -124,3 +125,9 @@ foreign import _volume :: Fn1 Utterance Number
 --|[SpeechSynthesisUtterance.volume (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/volume)
 volume :: Utterance -> Number
 volume = runFn1 _volume
+
+foreign import _text :: Fn1 Utterance String
+
+--|[SpeechSynthesisUtterance.text (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/text)
+text :: Utterance -> String
+text = runFn1 _text

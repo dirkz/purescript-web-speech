@@ -31,3 +31,7 @@ exports._rate = function(utterance) {
 exports._volume = function(utterance) {
     return utterance.volume;
 };
+
+exports._text = function(utterance) {
+    return utterance.text;
+};
