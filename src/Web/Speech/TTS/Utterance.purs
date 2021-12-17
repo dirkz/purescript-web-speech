@@ -8,6 +8,7 @@ module Web.Speech.TTS.Utterance
   , defaultRate
   , defaultVolume
   , lang
+  , listenToBoundary
   , pitch
   , pitchMax
   , pitchMin
@@ -24,9 +25,11 @@ module Web.Speech.TTS.Utterance
   where
 
 import Data.Function.Uncurried (Fn1, runFn1)
+import Effect.Uncurried (mkEffectFn1)
 import Data.Unit (Unit)
 import Effect (Effect)
-import Effect.Uncurried (EffectFn3, runEffectFn3)
+import Effect.Aff.Compat (mkEffectFn2)
+import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, runEffectFn1, runEffectFn2, runEffectFn3)
 import Web.Speech.TTS.SpeechSynthesisEvent (SpeechSynthesisEvent)
 import Web.Speech.TTS.Voice (Voice)
 
@@ -148,4 +151,7 @@ foreign import _utterance :: Fn1 SpeechSynthesisEvent Utterance
 utterance :: SpeechSynthesisEvent -> Utterance
 utterance = runFn1 _utterance
 
--- foreign import _listonToBoundary :: Fn1 Utterance (SpeechSynthesisEvent -> Effect Unit)
+foreign import _listenToBoundary :: EffectFn2 Utterance (EffectFn1 SpeechSynthesisEvent Unit) Unit
+
+listenToBoundary :: Utterance -> (SpeechSynthesisEvent -> Effect Unit) -> Effect Unit
+listenToBoundary utt fn = runEffectFn2 _listenToBoundary utt (mkEffectFn1 fn)
