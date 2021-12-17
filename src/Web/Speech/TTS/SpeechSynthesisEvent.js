@@ -11,7 +11,3 @@ exports._elapsedTime = function(e) {
 exports._name = function(e) {
     return e.name;
 };
-
-exports._utterance = function(e) {
-    return e.utterance;
-};
