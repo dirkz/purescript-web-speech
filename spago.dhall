@@ -16,10 +16,13 @@ to generate this file without the comments in this block.
   [ "aff"
   , "effect"
   , "functions"
+  , "integers"
   , "maybe"
   , "nullable"
   , "prelude"
   , "psci-support"
+  , "unsafe-coerce"
+  , "web-events"
   , "web-html"
   ]
 , packages = ./packages.dhall
