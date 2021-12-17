@@ -7,3 +7,7 @@ exports._charIndex = function(e) {
 exports._elapsedTime = function(e) {
     return e.elapsedTime;
 };
+
+exports._name = function(e) {
+    return e.name;
+};
