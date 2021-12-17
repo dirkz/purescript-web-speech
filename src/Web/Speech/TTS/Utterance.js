@@ -47,3 +47,7 @@ exports._utterance = function(e) {
 exports._listenToBoundary = function(utterance, callback) {
     utterance.onboundary = callback;
 };
+
+exports._listenToEnd = function(utterance, callback) {
+    utterance.onend = callback;
+};

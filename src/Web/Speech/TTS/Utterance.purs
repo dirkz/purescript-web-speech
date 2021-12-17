@@ -9,6 +9,7 @@ module Web.Speech.TTS.Utterance
   , defaultVolume
   , lang
   , listenToBoundary
+  , listenToEnd
   , pitch
   , pitchMax
   , pitchMin
@@ -21,7 +22,8 @@ module Web.Speech.TTS.Utterance
   , volume
   , volumeMax
   , volumeMin
-  ) where
+  )
+  where
 
 import Prelude
 import Data.Function.Uncurried (Fn1, runFn1)
@@ -154,3 +156,8 @@ foreign import _listenToBoundary :: EffectFn2 Utterance (Nullable (EffectFn1 Spe
 
 listenToBoundary :: Utterance -> (Maybe (SpeechSynthesisEvent -> Effect Unit)) -> Effect Unit
 listenToBoundary utt fn = runEffectFn2 _listenToBoundary utt (toNullable $ mkEffectFn1 <$> fn)
+
+foreign import _listenToEnd :: EffectFn2 Utterance (Nullable (EffectFn1 SpeechSynthesisEvent Unit)) Unit
+
+listenToEnd :: Utterance -> (Maybe (SpeechSynthesisEvent -> Effect Unit)) -> Effect Unit
+listenToEnd utt fn = runEffectFn2 _listenToEnd utt (toNullable $ mkEffectFn1 <$> fn)
