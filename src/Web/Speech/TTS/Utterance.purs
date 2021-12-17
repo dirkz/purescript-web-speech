@@ -15,8 +15,7 @@ module Web.Speech.TTS.Utterance
   , rateMin
   , volumeMax
   , volumeMin
-  )
-  where
+  ) where
 
 import Data.Function.Uncurried (Fn1, runFn1)
 import Effect (Effect)

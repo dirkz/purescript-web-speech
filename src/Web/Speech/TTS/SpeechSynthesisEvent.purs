@@ -6,11 +6,9 @@ module Web.Speech.TTS.SpeechSynthesisEvent
   , name
   , toEvent
   , utterance
-  )
-  where
+  ) where
 
 import Prelude
-
 import Data.Function.Uncurried (Fn1, runFn1)
 import Data.Int (floor)
 import Data.Maybe (Maybe)
