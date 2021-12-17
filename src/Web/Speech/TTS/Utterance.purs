@@ -154,10 +154,12 @@ utterance = runFn1 _utterance
 
 foreign import _listenToBoundary :: EffectFn2 Utterance (Nullable (EffectFn1 SpeechSynthesisEvent Unit)) Unit
 
+--|[SpeechSynthesisUtterance: boundary event](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/boundary_event)
 listenToBoundary :: Utterance -> (Maybe (SpeechSynthesisEvent -> Effect Unit)) -> Effect Unit
 listenToBoundary utt fn = runEffectFn2 _listenToBoundary utt (toNullable $ mkEffectFn1 <$> fn)
 
 foreign import _listenToEnd :: EffectFn2 Utterance (Nullable (EffectFn1 SpeechSynthesisEvent Unit)) Unit
 
+--|[SpeechSynthesisUtterance: end event](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/end_event)
 listenToEnd :: Utterance -> (Maybe (SpeechSynthesisEvent -> Effect Unit)) -> Effect Unit
 listenToEnd utt fn = runEffectFn2 _listenToEnd utt (toNullable $ mkEffectFn1 <$> fn)
