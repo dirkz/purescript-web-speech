@@ -20,8 +20,7 @@ import Web.Internal.FFI (unsafeReadProtoTagged)
 import Web.Speech.TTS.Utterance (Utterance)
 
 --|(Partly) wraps a [SpeechSynthesisEvent](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent)
-foreign import data SpeechSynthesisEventimport Web.Speech.TTS.Utterance (Utterance)
- :: Type
+foreign import data SpeechSynthesisEvent :: Type
 
 fromEvent :: Event -> Maybe SpeechSynthesisEvent
 fromEvent = unsafeReadProtoTagged "SpeechSynthesisEvent"
