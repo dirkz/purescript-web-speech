@@ -39,3 +39,7 @@ exports._text = function(utterance) {
 exports._voice = function(utterance) {
     return utterance.voice;
 };
+
+exports._listenToBoundary = function(utterance, callback) {
+    utterance.boundary = callback;
+};

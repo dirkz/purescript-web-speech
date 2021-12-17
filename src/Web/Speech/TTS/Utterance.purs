@@ -23,8 +23,10 @@ module Web.Speech.TTS.Utterance
   where
 
 import Data.Function.Uncurried (Fn1, runFn1)
+import Data.Unit (Unit)
 import Effect (Effect)
 import Effect.Uncurried (EffectFn3, runEffectFn3)
+-- import Web.Speech.TTS (SpeechSynthesisEvent)
 import Web.Speech.TTS.Voice (Voice)
 
 --|Represents a [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
@@ -138,3 +140,5 @@ foreign import _voice :: Fn1 Utterance Voice
 --|[SpeechSynthesisUtterance.voice (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/voice)
 voice :: Utterance -> Voice
 voice = runFn1 _voice
+
+-- foreign import _listonToBoundary :: Fn1 Utterance (SpeechSynthesisEvent -> Effect Unit)
