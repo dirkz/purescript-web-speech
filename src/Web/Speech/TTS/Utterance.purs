@@ -7,6 +7,7 @@ module Web.Speech.TTS.Utterance
   , defaultPitchRateVolume
   , defaultRate
   , defaultVolume
+  , lang
   , pitchMax
   , pitchMin
   , rateMax
@@ -16,6 +17,7 @@ module Web.Speech.TTS.Utterance
   )
   where
 
+import Data.Function.Uncurried (Fn1, runFn1)
 import Effect (Effect)
 import Effect.Uncurried (EffectFn3, runEffectFn3)
 import Web.Speech.TTS.Voice (Voice)
@@ -95,3 +97,9 @@ volumeMin = 0.0
 --|The maximum volume.
 volumeMax :: Number
 volumeMax = 1.0
+
+foreign import _lang :: Fn1 Utterance String
+
+--|[SpeechSynthesisUtterance.lang (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/lang)
+lang :: Utterance -> String
+lang = runFn1 _lang

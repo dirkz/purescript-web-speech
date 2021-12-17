@@ -15,3 +15,7 @@ exports._createWithVoiceAndRate = function (voice, rate, text) {
     utt.rate = rate;
     return utt;
 };
+
+exports._lang = function(utterance) {
+    return utterance.lang;
+};
