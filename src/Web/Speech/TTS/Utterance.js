@@ -27,3 +27,7 @@ exports._pitch = function(utterance) {
 exports._rate = function(utterance) {
     return utterance.rate;
 };
+
+exports._volume = function(utterance) {
+    return utterance.volume;
+};

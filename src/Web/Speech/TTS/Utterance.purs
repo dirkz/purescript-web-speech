@@ -14,9 +14,11 @@ module Web.Speech.TTS.Utterance
   , rate
   , rateMax
   , rateMin
+  , volume
   , volumeMax
   , volumeMin
-  ) where
+  )
+  where
 
 import Data.Function.Uncurried (Fn1, runFn1)
 import Effect (Effect)
@@ -116,3 +118,9 @@ foreign import _rate :: Fn1 Utterance Number
 --|[SpeechSynthesisUtterance.rate (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/rate)
 rate :: Utterance -> Number
 rate = runFn1 _rate
+
+foreign import _volume :: Fn1 Utterance Number
+
+--|[SpeechSynthesisUtterance.volume (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/volume)
+volume :: Utterance -> Number
+volume = runFn1 _volume
