@@ -21,15 +21,12 @@ module Web.Speech.TTS.Utterance
   , volume
   , volumeMax
   , volumeMin
-  )
-  where
+  ) where
 
 import Data.Function.Uncurried (Fn1, runFn1)
-import Effect.Uncurried (mkEffectFn1)
 import Data.Unit (Unit)
 import Effect (Effect)
-import Effect.Aff.Compat (mkEffectFn2)
-import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, runEffectFn1, runEffectFn2, runEffectFn3)
+import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, mkEffectFn1, runEffectFn2, runEffectFn3)
 import Web.Speech.TTS.SpeechSynthesisEvent (SpeechSynthesisEvent)
 import Web.Speech.TTS.Voice (Voice)
 
