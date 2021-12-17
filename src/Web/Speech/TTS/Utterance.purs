@@ -23,8 +23,10 @@ module Web.Speech.TTS.Utterance
   , volumeMin
   ) where
 
+import Prelude
 import Data.Function.Uncurried (Fn1, runFn1)
-import Data.Unit (Unit)
+import Data.Maybe (Maybe)
+import Data.Nullable (Nullable, toNullable)
 import Effect (Effect)
 import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, mkEffectFn1, runEffectFn2, runEffectFn3)
 import Web.Speech.TTS.SpeechSynthesisEvent (SpeechSynthesisEvent)
@@ -148,7 +150,7 @@ foreign import _utterance :: Fn1 SpeechSynthesisEvent Utterance
 utterance :: SpeechSynthesisEvent -> Utterance
 utterance = runFn1 _utterance
 
-foreign import _listenToBoundary :: EffectFn2 Utterance (EffectFn1 SpeechSynthesisEvent Unit) Unit
+foreign import _listenToBoundary :: EffectFn2 Utterance (Nullable (EffectFn1 SpeechSynthesisEvent Unit)) Unit
 
-listenToBoundary :: Utterance -> (SpeechSynthesisEvent -> Effect Unit) -> Effect Unit
-listenToBoundary utt fn = runEffectFn2 _listenToBoundary utt (mkEffectFn1 fn)
+listenToBoundary :: Utterance -> (Maybe (SpeechSynthesisEvent -> Effect Unit)) -> Effect Unit
+listenToBoundary utt fn = runEffectFn2 _listenToBoundary utt (toNullable $ mkEffectFn1 <$> fn)
