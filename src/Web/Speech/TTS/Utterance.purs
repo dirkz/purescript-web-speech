@@ -15,6 +15,7 @@ module Web.Speech.TTS.Utterance
   , rateMax
   , rateMin
   , text
+  , utterance
   , voice
   , volume
   , volumeMax
