@@ -35,3 +35,7 @@ exports._volume = function(utterance) {
 exports._text = function(utterance) {
     return utterance.text;
 };
+
+exports._voice = function(utterance) {
+    return utterance.voice;
+};
