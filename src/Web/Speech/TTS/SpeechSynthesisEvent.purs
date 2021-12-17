@@ -1,6 +1,7 @@
 module Web.Speech.TTS.SpeechSynthesisEvent
   ( SpeechSynthesisEvent
   , charIndex
+  , elapsedTime
   , fromEvent
   , toEvent
   )
@@ -29,3 +30,9 @@ foreign import _charIndex :: Fn1 SpeechSynthesisEvent Number
 --|[SpeechSynthesisEvent.charIndex](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent/charIndex)
 charIndex :: SpeechSynthesisEvent -> Int
 charIndex = runFn1 _charIndex >>> floor
+
+foreign import _elapsedTime :: Fn1 SpeechSynthesisEvent Number
+
+--|[SpeechSynthesisEvent.charIndex](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent/charIndex)
+elapsedTime :: SpeechSynthesisEvent -> Number
+elapsedTime = runFn1 _elapsedTime
