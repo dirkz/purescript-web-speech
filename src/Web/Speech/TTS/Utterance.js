@@ -1,6 +1,6 @@
 "strict";
 
-exports._createWithVoiceAndPitch = function (voice, pitch, text) {
+exports._createWithVoiceAndPitch = function(voice, pitch, text) {
     let utt = new SpeechSynthesisUtterance(text);
     utt.voice = voice;
     utt.pitch = pitch.pitch;
@@ -9,7 +9,7 @@ exports._createWithVoiceAndPitch = function (voice, pitch, text) {
     return utt;
 };
 
-exports._createWithVoiceAndRate = function (voice, rate, text) {
+exports._createWithVoiceAndRate = function(voice, rate, text) {
     let utt = new SpeechSynthesisUtterance(text);
     utt.voice = voice;
     utt.rate = rate;
