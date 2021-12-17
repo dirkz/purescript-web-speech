@@ -23,3 +23,7 @@ exports._lang = function(utterance) {
 exports._pitch = function(utterance) {
     return utterance.pitch;
 };
+
+exports._rate = function(utterance) {
+    return utterance.rate;
+};

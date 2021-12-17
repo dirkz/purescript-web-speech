@@ -11,6 +11,7 @@ module Web.Speech.TTS.Utterance
   , pitch
   , pitchMax
   , pitchMin
+  , rate
   , rateMax
   , rateMin
   , volumeMax
@@ -109,3 +110,9 @@ foreign import _pitch :: Fn1 Utterance Number
 --|[SpeechSynthesisUtterance.pitch (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/pitch)
 pitch :: Utterance -> Number
 pitch = runFn1 _pitch
+
+foreign import _rate :: Fn1 Utterance Number
+
+--|[SpeechSynthesisUtterance.rate (getter)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/rate)
+rate :: Utterance -> Number
+rate = runFn1 _rate
