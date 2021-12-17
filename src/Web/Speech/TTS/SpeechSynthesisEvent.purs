@@ -1,10 +1,15 @@
 module Web.Speech.TTS.SpeechSynthesisEvent
   ( SpeechSynthesisEvent
+  , charIndex
   , fromEvent
   , toEvent
   )
   where
 
+import Prelude
+
+import Data.Function.Uncurried (Fn1, runFn1)
+import Data.Int (floor)
 import Data.Maybe (Maybe)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.Event.Event (Event)
@@ -18,3 +23,9 @@ fromEvent = unsafeReadProtoTagged "SpeechSynthesisEvent"
 
 toEvent :: SpeechSynthesisEvent -> Event
 toEvent = unsafeCoerce
+
+foreign import _charIndex :: Fn1 SpeechSynthesisEvent Number
+
+--|[SpeechSynthesisEvent.charIndex](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent/charIndex)
+charIndex :: SpeechSynthesisEvent -> Int
+charIndex = runFn1 _charIndex >>> floor
