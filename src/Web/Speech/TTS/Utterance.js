@@ -40,10 +40,10 @@ exports._voice = function(utterance) {
     return utterance.voice;
 };
 
-exports._listenToBoundary = function(utterance, callback) {
-    utterance.boundary = callback;
-};
-
 exports._utterance = function(e) {
     return e.utterance;
+};
+
+exports._listenToBoundary = function(utterance, callback) {
+    utterance.boundary = callback;
 };
