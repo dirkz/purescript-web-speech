@@ -7,10 +7,12 @@ A purescript wrapper around the most basic functionality of [speech synthesis](h
 Operations in a nutshell:
 
 * Get access to the window SpeechSynthesis object.
-* List voices.
+* Get the list of voices.
 * Create an utterance.
-* Cancel the queue.
-* Speak.
+* Speak an utterance.
+* Cancel the queue of utterances.
+* Get called on the boundaries of what is to be spoken next.
+* Get called to when speaking of an utterance has ended.
 
 Pull requests are welcome. Please be aware of the LICENSE and format your code with `purty`.
 
