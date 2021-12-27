@@ -17,10 +17,13 @@
         "purescript-aff": "^v6.0.0",
         "purescript-effect": "^v3.0.0",
         "purescript-functions": "^v5.0.0",
+        "purescript-integers": "^v5.0.0",
         "purescript-maybe": "^v5.0.0",
         "purescript-nullable": "^v5.0.0",
         "purescript-prelude": "^v5.0.1",
         "purescript-psci-support": "^v5.0.0",
+        "purescript-unsafe-coerce": "^v5.0.0",
+        "purescript-web-events": "^v3.0.0",
         "purescript-web-html": "^v3.2.0"
     }
 }
